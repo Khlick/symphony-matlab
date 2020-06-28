@@ -71,7 +71,7 @@ classdef ClassRepository < handle
                         obj.log.debug(x.message, x);
                         continue;
                     end
-                elseif ~isempty(name) && name(1) == '+'
+                elseif ~isempty(name) && (name(1) == '+' || name(1) == '@')
                     obj.loadDirectory(fullfile(path, l.name));
                 end
             end

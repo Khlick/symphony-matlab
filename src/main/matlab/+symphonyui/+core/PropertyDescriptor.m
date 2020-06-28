@@ -59,7 +59,11 @@ classdef PropertyDescriptor < matlab.mixin.SetGet %#ok<*MCSUP>
         end
 
         function set.type(obj, t)
-            ft = uiextras.jide.PropertyType(t.primitiveType, t.shape, t.domain);
+            if isa(t,'uiextras.jide.PropertyType')
+              ft = t;
+            else
+              ft = uiextras.jide.PropertyType(t.primitiveType, t.shape, t.domain);
+            end
             obj.field.Type = ft;
         end
 

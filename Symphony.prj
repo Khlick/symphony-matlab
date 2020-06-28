@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="3957130694" file="C:\Users\mcafaro\Desktop\symphony-matlab\Symphony.prj" location="C:\Users\mcafaro\Desktop\symphony-matlab" name="Symphony" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="3523817282" file="E:\OneDrive\Programming\Symphony Development\symphony-matlab\Symphony.prj" location="E:\OneDrive\Programming\Symphony Development\symphony-matlab" name="Symphony" target="target.mlapps" target-name="Package App">
     <param.appname>Symphony</param.appname>
     <param.authnamewatermark>Symphony-DAS</param.authnamewatermark>
     <param.email>symphony-das@googlegroups.com</param.email>
@@ -40,12 +40,49 @@
     </fileset.resources>
     <fileset.package />
     <build-deliverables>
-      <file location="C:\Users\mcafaro\Desktop\symphony-matlab" name="target" optional="false">C:\Users\mcafaro\Desktop\symphony-matlab\target</file>
+      <file location="${PROJECT_ROOT}" name="target" optional="false">E:\OneDrive\Programming\Symphony Development\symphony-matlab\target</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2018b</root>
-      <toolboxes />
+      <root>C:\Program Files\MATLAB\R2020a</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+        <toolbox name="embeddedcoder" />
+        <toolbox name="gpucoder" />
+        <toolbox name="fixedpoint" />
+        <toolbox name="matlabhdlcoder" />
+        <toolbox name="neuralnetwork" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <embeddedcoder>
+          <enabled>true</enabled>
+        </embeddedcoder>
+      </toolbox>
+      <toolbox>
+        <gpucoder>
+          <enabled>true</enabled>
+        </gpucoder>
+      </toolbox>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <matlabhdlcoder>
+          <enabled>true</enabled>
+        </matlabhdlcoder>
+      </toolbox>
+      <toolbox>
+        <neuralnetwork>
+          <enabled>true</enabled>
+        </neuralnetwork>
+      </toolbox>
     </matlab>
     <platform>
       <unix>false</unix>

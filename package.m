@@ -7,7 +7,7 @@ function package(skipTests)
     % lib/Core Framework Look for core framework first, otherwise tests will
     % fail if skipTest == false
     coreSource = fileparts(which('Symphony.Core.dll'));
-    if iesmpty(coreSource)
+    if isempty(coreSource)
       error("Cannot find Symphony.Core assemblies.");
     end
     
@@ -17,6 +17,8 @@ function package(skipTests)
     
     rootPath = fileparts(mfilename('fullpath'));
     % temporarily copy dlls to lib, remove them
+    % remove coreSource from path to prevent duplicate name issues.
+    rmpath(genpath(coreSource));
     coreDestination = fullfile(rootPath,'lib','Core Framework');
     [status,msg] = mkdir(coreDestination);
     if ~status
@@ -105,8 +107,14 @@ function package(skipTests)
     matlab.apputil.package(projectFile);
     
     pause(1);
+    rmpath(coreDestination);
     [status,msg] = rmdir(coreDestination,'s');
     if ~status
       warning('Could not remove core framework from repo for reason: "%s"',msg);
     end
+    
+    % clear the path
+    warnState = warning('off','MATLAB:rmpath:DirNotFound');
+    rmpath(genpath(rootPath));
+    warning(warnState);
 end

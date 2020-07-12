@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="3523817282" file="E:\OneDrive\Programming\Symphony Development\symphony-matlab\Symphony.prj" location="E:\OneDrive\Programming\Symphony Development\symphony-matlab" name="Symphony" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="525667972" file="E:\OneDrive\Programming\Symphony Development\symphony-matlab\Symphony.prj" location="E:\OneDrive\Programming\Symphony Development\symphony-matlab" name="Symphony" target="target.mlapps" target-name="Package App">
     <param.appname>Symphony</param.appname>
     <param.authnamewatermark>Symphony-DAS</param.authnamewatermark>
     <param.email>symphony-das@googlegroups.com</param.email>
@@ -13,7 +13,7 @@
     <param.summary>Data Acquisition System</param.summary>
     <param.description>Symphony is a MATLAB based data acquisition system for electrophysiologists.</param.description>
     <param.screenshot>${PROJECT_ROOT}\src\main\resources\screenshot.png</param.screenshot>
-    <param.version>2.6.3.0</param.version>
+    <param.version>2.6.3.1</param.version>
     <param.products.name>
       <item>MATLAB</item>
     </param.products.name>
@@ -21,7 +21,7 @@
       <item>1</item>
     </param.products.id>
     <param.products.version>
-      <item>9.5</item>
+      <item>9.8</item>
     </param.products.version>
     <param.platforms>
       <item>win64</item>

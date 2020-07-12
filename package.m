@@ -2,12 +2,41 @@ function package(skipTests)
     if nargin < 1
         skipTests = false;
     end
-
+    
+    % Package with built Symphony Core, need to nest them into: 
+    % lib/Core Framework Look for core framework first, otherwise tests will
+    % fail if skipTest == false
+    coreSource = fileparts(which('Symphony.Core.dll'));
+    if iesmpty(coreSource)
+      error("Cannot find Symphony.Core assemblies.");
+    end
+    
     if ~skipTests
         test();
     end
-
+    
     rootPath = fileparts(mfilename('fullpath'));
+    % temporarily copy dlls to lib, remove them
+    coreDestination = fullfile(rootPath,'lib','Core Framework');
+    [status,msg] = mkdir(coreDestination);
+    if ~status
+      error("Could not merge Core Framework for reason: '%s'.", msg);
+    end
+    coreLibs = string(ls(coreSource))';
+    coreLibs(startsWith(coreLibs,'.')) = [];
+    errs = [];
+    for lib = coreLibs
+      [cStatus,msg] = copyfile(fullfile(coreSource,lib),coreDestination);
+      if ~cStatus
+        errs(end+1) = strcat(lib," skipped: ", msg);  %#ok<AGROW>
+      end
+    end
+    % report
+    if ~isempty(errs)
+      fprintf(strcat(strjoin(errs,'\n'),'\n'));
+    end
+    
+    % target package directory
     targetPath = fullfile(rootPath, 'target');
     [~, ~] = mkdir(targetPath);
 
@@ -74,4 +103,10 @@ function package(skipTests)
     fclose(fid);
 
     matlab.apputil.package(projectFile);
+    
+    pause(1);
+    [status,msg] = rmdir(coreDestination,'s');
+    if ~status
+      warning('Could not remove core framework from repo for reason: "%s"',msg);
+    end
 end
